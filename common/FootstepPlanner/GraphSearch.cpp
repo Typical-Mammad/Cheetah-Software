@@ -1,6 +1,20 @@
 #include "GraphSearch.h"
 #include "Math/orientation_tools.h"
+/*
+using the graphsearch.h (defining some vectors to place the cost values etc.)
+it plans its footsteps using the cost function ()
+to decide where it should place it's foot
+*/
 
+/*
+A desired path for the robot's body is created by calling buildInputTrajectory.
+
+A planning algorithm (from GraphSearch.h) starts.
+
+The algorithm searches through many possible sequences of footsteps, using the defined gait patterns to determine which feet can move.
+
+It uses cost functions like distanceToGoal to find the most efficient and stable sequence of footsteps that lets the robot follow the reference path.
+*/
 float FootplanCosts::distanceToGoal(FootplanState &state, FootplanGoal &goal) {
   Vec2<float> dp = state.pBase - goal.goalPos;
   return dp.norm();
